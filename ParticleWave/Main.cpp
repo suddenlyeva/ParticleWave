@@ -1,13 +1,19 @@
 #pragma once
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
+#include "TextureDictionary.h"
 
 using namespace std;
 
 int main(void) {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Fullscreen);
+	
+	TextureDictionary TEXTURES = TextureDictionary("assets/images/");
+
+	sf::Sprite player;
+
+	player.setTexture(TEXTURES["player"]);
 
 	while (window.isOpen())
 	{
@@ -19,7 +25,7 @@ int main(void) {
 		}
 
 		window.clear();
-		window.draw(shape);
+		window.draw(player);
 		window.display();
 	}
 
